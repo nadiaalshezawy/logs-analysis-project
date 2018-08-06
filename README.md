@@ -37,35 +37,42 @@ The project have main python file and text file:
 -To load the data, use the command 
 : psql -d news -f newsdata.sql 
 
-- neew to add this three view for part three question
+- need to add this three view for part three question
 
 ```
+    
     create log1
     create view  log1 as select DATE_TRUNC('day',log.time) as day,
     log.status,count(*) as request
     from log
     where status='200 OK'
     group by day,log.status
-    order by day;```
+    order by day;
+
+```
 
 
 
 
 ```
+
     create view log2 as select DATE_TRUNC('day',log.time) as day,log.status,count(*) as error
     from log
     where log.status !='200 OK'
     group by day, log.status
     order by day;
+
 ```
 
 
 ```
+
     create view log3 as select log1.day as day,
     CAST(log2.error AS float)/CAST((log1.request+log2.error) As float) as error
     from log1
     join log2
     on log1.day=log2.day;
+
 ```
 
 -change the directory to  python file location and run program using this command:
