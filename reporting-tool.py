@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2.7
 # log analysis project which build informative summry
 # from database contains newspaper articles as well as
 # web server log for the site
